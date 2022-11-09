@@ -1,1 +1,114 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: "Poppins";
+    src: local("Poppins"), url(./assets/fonts/Poppins-Regular.ttf) format("truetype");
+}
+
+$background-color : #ecf0f8;
+$text-color : #313956;
+$button-primary-color : #5458BB;
+$button-secondary-color : #B9BEC6;
+
+
+// #4B536E
+// #989072
+// #5458BB
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    background-color: $background-color;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 0;
+    gap: 1rem;
+    color: $text-color;
+}
+
+.search-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 2rem;
+    .input-container {
+        position: relative;
+        .input-field {
+            width: 550px;
+            border: none;
+            border-radius: 1rem;
+            height: 5rem;
+            padding-inline-start: 5rem;
+        }
+        .input-field:focus {
+            outline: none;
+        }
+        .search-icon {
+            font-size: 2rem;
+            color: gray;
+            position: absolute;
+            z-index: 0;
+            left: 1.5rem;
+            top: 1.5rem;
+        }
+    }
+    .search-btn {
+        padding: 1rem 2rem;
+        border-radius: 3rem;
+        border: none;
+        background-color: $button-primary-color;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 5rem;
+    margin: 5rem 0;
+    .list-tile {
+        position: relative;
+        .circle {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background-color: $background-color;
+            position: absolute;
+            right: -25px;
+            top: 75px;
+        }
+        .block {
+            background-color: #b4d4fe;
+            width: 800px;
+            display: flex;
+            height: 200px;
+            border-radius: 2rem;
+            .main-block {
+                width: 600px;
+                height: 100%;
+                border-right: 2px rgb(87, 87, 87) dashed;
+            }
+            .side-block {
+                width: 200px;
+                height: 100%;
+            }
+        }
+    }
+}
