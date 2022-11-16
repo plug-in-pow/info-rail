@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as JsBarcode from 'jsbarcode';
+import { DataServiceService } from './core/services/data-service.service';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +10,20 @@ import * as JsBarcode from 'jsbarcode';
 })
 export class AppComponent implements OnInit {
   title = 'info-rail';
+  trainsData: any;
+
+  constructor(private trainDataService: DataServiceService, private router:Router) {}
 
   ngOnInit() {
-    JsBarcode('#barcode', '12345', {
-      height: 50,
-      width: 2.3,
-      text: '04601'
-    });
+    this.router.navigate(['search'])
+    // this.trainDataService.getTrainsData().subscribe((data: any) => {
+    //   console.log(data['features'].length)
+    // })
+    
+    // JsBarcode('#barcode', '12345', {
+    //   height: 50,
+    //   width: 2.3,
+    //   text: '04601'
+    // });
   }
 }

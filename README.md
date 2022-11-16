@@ -25,3 +25,25 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Schema
+Train info
+- train_no
+- name
+- zone
+- arrival time
+- departure time
+- from station
+- from station code
+- to station
+- to station code
+- train type
+- distance in km
+- coaches type and count
+
+Schedules
+- arrival time
+- day
+- train_name
+- id
+- departure time
