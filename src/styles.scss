@@ -29,9 +29,18 @@ h3 {
 }
 
 header {
+    background-color: #e4eaf6;
     display: flex;
     justify-content: space-between;
-    margin: 4rem 4rem;
+    align-items: center;
+    padding: 2rem 4rem;
+    position: sticky;
+    top: 0;
+    .block {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
 }
 
 .logo {
@@ -47,7 +56,6 @@ header {
     .input-container {
         position: relative;
         .input-field {
-            width: 350px;
             border: none;
             border-radius: 1rem;
             height: 5rem;
@@ -73,6 +81,54 @@ header {
         color: white;
         cursor: pointer;
     }
+}
+
+.search-page-container {
+    margin: 0 2rem 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    .card {
+        background-color: white;
+        width: 300px;
+        min-height: 350px;
+        border: none;
+        border-radius: 1rem;
+        padding: 2rem;
+        .text {
+            .title-text {
+                color: #5247be;
+                font-size: 1.5rem;
+            }
+        }
+        .button {
+            border-top: 2px solid rgb(230, 229, 229);
+            button {
+                background-color: #e4eaf6;
+                border: none;
+                cursor: pointer;
+                padding: 1rem 2rem;
+                border-radius: 3rem;
+            }
+            button:hover {
+                filter: contrast(70%)
+            }
+        }
+    }
+}
+
+.sort button, .filter button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    padding: 0.5rem 2rem;
+    background-color: #0b4076;
+    color: white;
+    border-radius: 0.5rem;
 }
 
 .container {
