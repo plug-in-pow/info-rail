@@ -10,17 +10,40 @@
                 <i class="search-icon uil uil-search"></i>
             </div>
         </div>
-        <div class="filter">
+        <div class="filter" (click)="toggleFilter()">
             <button>
                 <i class="uil uil-filter"></i>
                 <span>Filter</span>
+                <i class="uil" [ngClass]="showFilter ? 'uil-angle-down':'uil-angle-up'"></i>
             </button>
+            <div id="filter-dropdown" class="dropdown" [style.display]="showFilter ? 'flex' : 'none'">
+                <input type="text" placeholder="From Station" name="from-station"/>
+                <button class="exchange-btn">
+                    <i class="uil uil-exchange"></i>
+                </button>
+                <input type="text" placeholder="To Station" name="to-station"/>
+                <div class="form-btn">
+                    <button class="btn">Apply Filter</button>
+                    <button class="btn">Cancel</button>
+                </div>
+            </div>
         </div>
-        <div class="sort">
+        <div class="sort" (click)="toggleDropdown()">
             <button>
                 <i class="uil uil-sort"></i>
                 <span>Sort</span>
+                <i class="uil" [ngClass]="showDrilldown ? 'uil-angle-down':'uil-angle-up'"></i>
             </button>
+            <div id="sort-dropdown" class="dropdown" [style.display]="showDrilldown ? 'block' : 'none'">
+                <ul class="sorting-list">
+                    <li value="train_no">
+                        <i class="uil uil-sort-amount-down"></i><span>Train No.</span>
+                    </li>
+                    <li value="train_name">
+                        <i class="uil uil-sort-amount-down"></i><span>Train Name</span>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </header>
