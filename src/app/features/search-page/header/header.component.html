@@ -10,8 +10,8 @@
                 <i class="search-icon uil uil-search"></i>
             </div>
         </div>
-        <div class="filter" (click)="toggleFilter()">
-            <button>
+        <div class="filter">
+            <button (click)="toggleFilter()">
                 <i class="uil uil-filter"></i>
                 <span>Filter</span>
                 <i class="uil" [ngClass]="showFilter ? 'uil-angle-down':'uil-angle-up'"></i>
@@ -23,18 +23,18 @@
                 </button>
                 <input type="text" placeholder="To Station" name="to-station"/>
                 <div class="form-btn">
-                    <button class="btn">Apply Filter</button>
-                    <button class="btn">Cancel</button>
+                    <button class="btn" (click)="toggleFilter()">Apply Filter</button>
+                    <button class="btn" (click)="toggleFilter()">Clear</button>
                 </div>
             </div>
         </div>
-        <div class="sort" (click)="toggleDropdown()">
-            <button>
+        <div class="sort">
+            <button (click)="toggleDropdown()">
                 <i class="uil uil-sort"></i>
                 <span>Sort</span>
-                <i class="uil" [ngClass]="showDrilldown ? 'uil-angle-down':'uil-angle-up'"></i>
+                <i class="uil" [ngClass]="showDropdown ? 'uil-angle-down':'uil-angle-up'"></i>
             </button>
-            <div id="sort-dropdown" class="dropdown" [style.display]="showDrilldown ? 'block' : 'none'">
+            <div id="sort-dropdown" class="dropdown" [style.display]="showDropdown ? 'block' : 'none'">
                 <ul class="sorting-list">
                     <li value="train_no">
                         <i class="uil uil-sort-amount-down"></i><span>Train No.</span>

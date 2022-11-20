@@ -7,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  showDrilldown: boolean = false;
+  showDropdown: boolean = false;
   showFilter: boolean = false;
+  fromStation: string = '';
+  toStation: string = '';
 
   constructor() { }
 
@@ -16,11 +18,13 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleDropdown(): void {
-    this.showDrilldown = !this.showDrilldown;
+    this.showDropdown = !this.showDropdown;
+    this.showFilter = false;
   }
 
   toggleFilter(): void {
     this.showFilter = !this.showFilter;
+    this.showDropdown = false;
   }
 
 }
