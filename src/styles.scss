@@ -46,6 +46,24 @@ header {
     top: 0;
 }
 
+.details-header::after {
+    content: '';
+}
+
+.back-btn {
+    border-radius: 50%;
+    border: none;
+    background-color: white;
+    height: 40px;
+    width: 40px;
+    font-size: 3rem;
+    cursor: pointer;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    i {
+        display: block;
+    }
+}
+
 .block {
     display: flex;
     align-items: center;
@@ -279,13 +297,12 @@ header {
     .block {
         width: 800px;
         display: flex;
-        min-height: 250px;
         background-color: white;
         .main-block {
             width: 600px;
             max-height: 100%;
             border-right: 4px rgb(132, 132, 132) dashed;
-            padding: 1rem 2rem;
+            padding: 3rem 2rem;
             .key {
                 color: #5247be;
             }
