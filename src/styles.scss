@@ -146,7 +146,6 @@ header {
         vertical-align: middle;
         background-color: map-get($header, "button-background-color");
         color: map-get($header, "button-color");
-        width: min-content;
         border-radius: 50%;
         height: 30px;
         width: 30px;
@@ -280,6 +279,7 @@ header {
 }
 
 .details-container {
+    padding: 1rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -323,7 +323,6 @@ $circle-width: 75px;
     .block {
         border-left: 2px solid $border-color;
         border-right: 2px solid $border-color;
-        width: 600px;
         background-color: white;
         max-height: 100%;
         padding: 1rem $circle-width 2rem 2rem;
@@ -410,7 +409,9 @@ $circle-width: 75px;
     .box-row {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        row-gap: 2rem;
+        gap: 1rem;
+        justify-content: space-evenly;
         font-size: 1.5rem;
         text-align: center;
         padding-top: 2rem;
@@ -444,5 +445,109 @@ $circle-width: 75px;
     border: 2px solid $border-color;
     span {
         padding: 2rem 1rem;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    header{
+        justify-content: center;
+        gap: 1rem;        
+        .logo span {
+            display: none;
+        }
+    }
+
+    .details-header {
+        justify-content: space-around;
+        padding: 2rem 0;
+        .logo span {
+            display: block;
+        }
+    }
+
+    .filter {
+        position: fixed;
+        bottom: 2rem;
+        right: 8rem;
+        border-radius: 50%;
+    }
+
+    .filter button {
+        border-radius: 50%;
+        padding: 1.5rem;
+        border: none;
+    }
+
+    .filter button span, .filter button i:nth-child(3) {
+        display: none;
+    }
+
+    #filter-dropdown {
+        bottom: 6rem;
+        right: -6rem;
+    }
+
+    #filter-dropdown .exchange-btn {
+        padding: 0;
+    }
+
+    .sort {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        border-radius: 50%;
+    }
+
+    .sort button {
+        border-radius: 50%;
+        padding: 1.5rem;
+        border: none;
+    }
+
+    .sort button span, .sort button i:nth-child(3) {
+        display: none;
+    }
+
+    #sort-dropdown {
+        bottom: 6rem;
+        right: 0;
+    }
+
+    .header-block {
+        flex-shrink: 0;
+        flex-grow: 1;
+        width: 100%;
+    }
+
+    .input-container {
+        width: 100%;
+    }
+
+    .input-field {
+        width: 100%;
+    }
+
+    .list-tile {
+        .circle {
+            top: 35%;
+        }
+    }
+
+    .timetable-container {
+        padding: 1rem;
+        width: 100%;
+    }
+
+    .timetable-title {
+        text-align: center;
+    }
+
+    .timetable-container .timetable-row {
+        .small-item:first-child{
+            width: 30%;
+        }
+        .large-item{
+            width: 50%;
+        }
     }
 }
