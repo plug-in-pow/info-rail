@@ -4,7 +4,24 @@
     src: local("Poppins"), url(./assets/fonts/Poppins-Regular.ttf) format("truetype");
 }
 
+$border-color: rgb(230, 229, 229);
+
+$header: ( 
+    "background-color": #ffff, 
+    "button-background-color": #0b4076,
+    "button-color": #ffff,
+    "logo-color": #0b4076,
+    "input-background-color": #e4eaf6
+);
+
+$body: (
+    "background-color": #ffff,
+    "card-background-color": #ffff,
+    "button-background-color": #e4eaf6
+);
+
 // Common css
+
 
 * {
     padding: 0;
@@ -15,7 +32,7 @@
 
 html {
     font-size: 62.5%;
-    background-color: #e4eaf6;
+    background-color: map-get($body, "background-color");;
 }
 
 h1 {
@@ -37,13 +54,18 @@ li {
 // Header section
 
 header {
-    background-color: #e4eaf6;
+    background-color: map-get($header, "background-color");
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 2rem 4rem;
     position: sticky;
     top: 0;
+    border-bottom: 1px solid $border-color;
+}
+
+.details-header {
+    z-index: 1;
 }
 
 .details-header::after {
@@ -53,18 +75,18 @@ header {
 .back-btn {
     border-radius: 50%;
     border: none;
-    background-color: white;
+    background-color: map-get($header, "input-background-color");
+    color: map-get($header, "button-background-color");
     height: 40px;
     width: 40px;
     font-size: 3rem;
     cursor: pointer;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     i {
         display: block;
     }
 }
 
-.block {
+.header-block {
     display: flex;
     align-items: center;
     gap: 2rem;
@@ -89,14 +111,14 @@ header {
     right: 0;
     li {
         padding: 1rem 2rem;
-        background-color:white;
+        background-color: map-get($header, "background-color");
         cursor: pointer;
     }
     li:hover {
         filter: contrast(90%);
     }
     li:first-child {
-        border-bottom: 2px solid rgb(230, 229, 229);
+        border-bottom: 2px solid $border-color;
     }
 }
 
@@ -105,14 +127,14 @@ header {
     flex-direction: column;
     align-items: center;
     padding: 2rem;
-    background-color: white;
+    background-color: map-get($header, "background-color");
     right: 18rem;
     width: 300px;
     row-gap: 2rem;
     input {
         height: 4rem;
         width: 100%;
-        background-color: #f6f6f6;
+        background-color: map-get($header, "input-background-color");
         border: none;
         border-radius: 0.5rem;
         padding-inline-start: 1rem;
@@ -122,8 +144,8 @@ header {
     }
     .exchange-btn {
         vertical-align: middle;
-        background-color: #0b4076;
-        color: white;
+        background-color: map-get($header, "button-background-color");
+        color: map-get($header, "button-color");
         width: min-content;
         border-radius: 50%;
         height: 30px;
@@ -151,8 +173,8 @@ header {
         cursor: pointer;
     }
     .btn:nth-child(1) {
-        background-color: #0b4076;
-        color: white;
+        background-color: map-get($header, "button-background-color");
+        color: map-get($header, "button-color");
     }
     .btn:nth-child(2) {
         border: 1px solid;
@@ -176,7 +198,6 @@ header {
     align-items: center;
     font-size: 3rem;
     gap: 1rem;
-    color: #313956;
 }
 
 .input-container {
@@ -184,6 +205,8 @@ header {
 }
 
 .input-field {
+    background-color: map-get($header, "input-background-color");;
+    width: 400px;
     border: none;
     border-radius: 1rem;
     height: 5rem;
@@ -203,37 +226,37 @@ header {
     top: 1.5rem;
 }
 
-// Main body css
+// ----------------------------- Main body css -------------------------------------
 
 .search-page-container {
-    margin: 0 2rem 4rem;
+    margin: 2rem 4rem;
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
     align-items: center;
     justify-content: center;
+    .text {
+        .title-text {
+            color: #5247be;
+            font-size: 1.5rem;
+        }
+    }
 }
 
 .card {
-    background-color: white;
+    background-color: map-get($body, "card-background-color");;
     width: 300px;
     min-height: 350px;
     border: none;
     border-radius: 1rem;
     padding: 2rem;
-}
-
-.text {
-    .title-text {
-        color: #5247be;
-        font-size: 1.5rem;
-    }
+    border: 1px solid rgb(195, 195, 195);
 }
 
 .button {
     border-top: 2px solid rgb(230, 229, 229);
     button {
-        background-color: #e4eaf6;
+        background-color: map-get($body, "button-background-color");
         border: none;
         cursor: pointer;
         padding: 1rem 2rem;
@@ -256,18 +279,21 @@ header {
     border-radius: 0.5rem;
 }
 
-.container {
+.details-container {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    gap: 3rem;
+    align-items: flex-start;
     row-gap: 5rem;
     margin: 5rem 0;
 }
 
+$circle-width: 75px;
+
 .list-tile {
     position: relative;
-    background-color: #ffffff;
+    background-color: map-get($body, "background-color");
     border-radius: 2rem;
     overflow: hidden;
     font-size: 1.5rem;
@@ -285,57 +311,96 @@ header {
         height: 20px;
     }
     .circle {
-        height: 100px;
-        width: 100px;
-        border-top-left-radius: 50%;
-        border-bottom-left-radius: 50%;
-        background-color: #e4eaf6;
+        height: $circle-width;
+        width: $circle-width;
+        border-radius: 50%;
+        background-color: map-get($body, "background-color");
         position: absolute;
-        right: -50px;
-        top: 100px;
+        right: -37.5px;
+        top: 88px;
+        border: 2px solid $border-color;
     }
     .block {
-        width: 800px;
-        display: flex;
+        border-left: 2px solid $border-color;
+        border-right: 2px solid $border-color;
+        width: 600px;
         background-color: white;
-        .main-block {
-            width: 600px;
-            max-height: 100%;
-            border-right: 4px rgb(132, 132, 132) dashed;
-            padding: 3rem 2rem;
-            .key {
-                color: #5247be;
-            }
-            .value {
-                font-size: 2rem;
-            }
-            .train-time-block {
+        max-height: 100%;
+        padding: 1rem $circle-width 2rem 2rem;
+        .key {
+            color: #5247be;
+        }
+        .value {
+            font-size: 2rem;
+        }
+        .train-time-block {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            .from-block , .to-block {
                 display: flex;
-                justify-content: space-between;
-                flex-wrap: wrap;
-                .from-block , .to-block {
-                    display: flex;
-                    flex-direction: column;
-                }
-            }
-            .detail-btn {
-                padding: 0.5rem 1.5rem;
-                border:none;
-                background-color: #5458BB;
-                color: white;
-                border-radius: 0.5rem;
+                flex-direction: column;
             }
         }
-        .side-block {
-            width: 200px;
-            height: 100%;
-            #barcode {
-                position: absolute;
-                transform: rotate(270deg) !important;
-                top: 11rem;
-                right: 25px;
-            }
+        .detail-btn {
+            padding: 0.5rem 1.5rem;
+            border:none;
+            background-color: map-get($body, "button-background-color");
+            color: white;
+            border-radius: 0.5rem;
         }
     }
 }
 
+.timetable-container {
+    border-radius: 3rem;
+    border: 2px solid $border-color;
+    font-size: 1.5rem;
+    width: 500px;
+    padding: 2rem 4rem;
+    .timetable-title {
+        padding-bottom: 4rem;
+    }
+    .timetable-row {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 2rem;
+        .small-item, .large-item {
+            height: 120px;
+            overflow: hidden;
+            word-wrap: break-word;
+        }
+        .small-item{
+            width: 80px;
+        }
+        .large-item{
+            width: 200px;
+        }
+    }
+    .timetable-row:last-child .line-svg {
+        height: 0;
+    }
+    .time {
+        text-align: right;
+        letter-spacing: 2px;
+    }
+    .title, .day {
+        text-align: start;
+    }
+    .outer-cirle {
+        position: relative;
+        background-color: #0bc439;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        .inner-circle {
+            position: absolute;
+            left: 6px;
+            top: 6px;
+            border-radius: 50%;
+            background-color: white;
+            height: 8px;
+            width: 8px;
+        }
+    }
+}
