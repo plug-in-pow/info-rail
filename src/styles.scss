@@ -404,3 +404,45 @@ $circle-width: 75px;
         }
     }
 }
+
+.coach-info-block {
+    padding: 4rem 1.5rem 2rem 1.5rem;
+    .box-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        font-size: 1.5rem;
+        text-align: center;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        .color-box {
+            background-color: #e8f1fb;
+            overflow: hidden;
+            border: 1px solid rgb(205, 216, 254);
+            border-radius: 1.5rem;
+            .coach-count {
+                padding: 1.5rem 1rem;
+                border-bottom: 2px solid rgb(224, 230, 252);
+            }
+            .coach-name {
+                background-color: #ffff;
+                overflow-wrap: break-word;
+                padding: 1rem;
+            }
+        }
+    }
+}
+
+.meta-data-block {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 1rem;
+    padding: 0rem 1.5rem;
+    margin-bottom: 3rem;
+    border: 2px solid $border-color;
+    span {
+        padding: 2rem 1rem;
+    }
+}
