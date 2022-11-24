@@ -33,12 +33,14 @@
                 <i class="uil" [ngClass]="showDropdown ? 'uil-angle-down':'uil-angle-up'"></i>
             </button>
             <div id="sort-dropdown" class="dropdown" [style.display]="showDropdown ? 'block' : 'none'">
-                <ul class="sorting-list">
-                    <li value="train_no">
-                        <i class="uil uil-sort-amount-down"></i><span>Train No.</span>
+                <ul class="sorting-list" (click)="toggleDropdown()">
+                    <li (click)="selectOption($event)">
+                        <i class="uil" [ngClass]="selectedSortingItem === 'Train No.' ? 'colorGreen uil-check-circle' : 'colorRed uil-times-circle'"></i>
+                        <span>Train No.</span>
                     </li>
-                    <li value="train_name">
-                        <i class="uil uil-sort-amount-down"></i><span>Train Name</span>
+                    <li (click)="selectOption($event)">
+                        <i class="uil" [ngClass]="selectedSortingItem === 'Train No.' ? 'colorRed uil-times-circle' : 'colorGreen uil-check-circle'"></i>
+                        <span>Train Name</span>
                     </li>
                 </ul>
             </div>

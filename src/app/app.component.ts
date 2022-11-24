@@ -14,6 +14,6 @@ export class AppComponent implements OnInit {
   constructor(private trainDataService: DataServiceService, private router:Router) {}
 
   ngOnInit() {
-    this.router.navigate(['details']);
+    this.router.navigate(['search']);
   }
 }

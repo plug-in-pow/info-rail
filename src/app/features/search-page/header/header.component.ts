@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
   showFilter: boolean = false;
   fromStation: string = '';
   toStation: string = '';
-
+  selectedSortingItem: string = 'Train No.';
   constructor() { }
 
   ngOnInit(): void {
@@ -25,6 +25,10 @@ export class HeaderComponent implements OnInit {
   toggleFilter(): void {
     this.showFilter = !this.showFilter;
     this.showDropdown = false;
+  }
+
+  selectOption(event: Event): void {
+    this.selectedSortingItem = (event.target as HTMLOListElement).innerText;
   }
 
 }
