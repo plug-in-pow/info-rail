@@ -35,12 +35,12 @@
             <div id="sort-dropdown" class="dropdown" [style.display]="showDropdown ? 'block' : 'none'">
                 <ul class="sorting-list" (click)="toggleDropdown()">
                     <li (click)="selectOption($event)">
-                        <i class="uil" [ngClass]="selectedSortingItem === 'Train No.' ? 'colorGreen uil-check-circle' : 'colorRed uil-times-circle'"></i>
                         <span>Train No.</span>
+                        <i class="uil" [ngClass]="selectedSortingItem === 'Train No.' ? 'colorGreen uil-check-circle' : 'colorWhite uil-check-circle'"></i>
                     </li>
                     <li (click)="selectOption($event)">
-                        <i class="uil" [ngClass]="selectedSortingItem === 'Train No.' ? 'colorRed uil-times-circle' : 'colorGreen uil-check-circle'"></i>
                         <span>Train Name</span>
+                        <i class="uil" [ngClass]="selectedSortingItem === 'Train No.' ? 'colorWhite uil-check-circle' : 'colorGreen uil-check-circle'"></i>
                     </li>
                 </ul>
             </div>

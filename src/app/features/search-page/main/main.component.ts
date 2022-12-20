@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class MainComponent implements OnInit {
 
-  tempData: number[] = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+  tempData: number[] = [1,2,3,4,5,6,7,8]
 
   constructor(private router:Router) { }
 
