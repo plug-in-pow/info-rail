@@ -6,11 +6,25 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataServiceService {
 
-  trainsApiUrl: string = 'http://localhost:4200/assets/json/trains.json';
+  baseUrl: string = 'https://info-rail-api-gateway.onrender.com';
 
   constructor(private http:HttpClient) { }
 
-  getTrainsData() {
-    return this.http.get(this.trainsApiUrl);
+  getTrainsData(train_number: number) {
+    return this.http.get(this.baseUrl + '/data',{
+      params: {
+        'train_no': train_number
+      }
+    });
+  }
+
+  getCurrentPageList(page_no: number, pagination_limit: number, order_by: string) {
+    return this.http.get(this.baseUrl + '/list',{
+      params: {
+        'limit': pagination_limit,
+        'page': page_no,
+        'orderBy': order_by
+      }
+    });
   }
 }

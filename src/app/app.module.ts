@@ -8,7 +8,7 @@ import { CoreModule } from './core/core.module';
 
 const routes: Routes = [
   { path: 'search', loadChildren: () => import('./features/search-page/search-page.module').then(m => m.SearchPageModule) },
-  { path: 'details', loadChildren: () => import('./features/details-page/details-page.module').then(m => m.DetailsPageModule) },
+  { path: 'details/:id', loadChildren: () => import('./features/details-page/details-page.module').then(m => m.DetailsPageModule) },
 ]
 
 @NgModule({
