@@ -8,38 +8,38 @@
     </div>
 </header>
 
-<div class="details-container">
+<div class="details-container" *ngIf="trainData">
     <div class="side-block">
         <div class="meta-data-block">
-            <span>Train Type<br/><h3>DEMU</h3></span>
-            <span>Total Travel Duration<br/><h3>1 hr 35 min</h3></span>
+            <span>Train Type<br/><h3>{{trainData.train_type}}</h3></span>
+            <span>Total Travel Duration<br/><h3>{{trainData.duration_h}} hr {{trainData.duration_m}} min</h3></span>
         </div>
         <div class="list-tile">
             <div class="circle"></div>
             <div class="upper-stripes">
                 <i class="uil uil-metro"></i>
-                <span>Train No : 04601</span>
+                <span>Train No : {{trainData.train_no}}</span>
             </div>
             <div class="block">
                 <span class="key">Train Name</span><br />
-                <span class="value">Jammu Tawi Udhampur Special</span>
+                <span class="value">{{trainData.train_name}}</span>
                 <br /><br />
                 <div class="train-time-block">
                     <div class="from-block">
                         <span class="key">From</span>
-                        <span class="value">JAMMU TAWI<br />(JAT)</span>
+                        <span class="value">{{trainData.start_at}}<br />({{trainData.start_at_cd}})</span>
                     </div>
                     <div class="to-block">
                         <span class="key">To</span>
-                        <span class="value">UDHAMPUR<br />(UHP)</span>
+                        <span class="value">{{trainData.end_at}}<br />({{trainData.end_at_cd}})</span>
                     </div>
                     <div class="from-block">
                         <span class="key">Start At</span>
-                        <span class="value">10:40:00</span>
+                        <span class="value">{{trainData.departure_time}}</span>
                     </div>
                     <div class="to-block">
                         <span class="key">End At</span>
-                        <span class="value">12:15:00</span>
+                        <span class="value">{{trainData.arrival_time}}</span>
                     </div>
                 </div>
             </div>
@@ -48,29 +48,9 @@
         <div class="coach-info-block">
             <h3>Coaches</h3>
             <div class="box-row">
-                <div class="color-box">
-                    <div class="coach-count">0</div>
-                    <div class="coach-name">Chair Car</div>
-                </div>
-                <div class="color-box">
-                    <div class="coach-count" style="background-color: #e8fbea;">5</div>
-                    <div class="coach-name">First Class</div>
-                </div>
-                <div class="color-box">
-                    <div class="coach-count">0</div>
-                    <div class="coach-name">Sleeper</div>
-                </div>
-                <div class="color-box">
-                    <div class="coach-count" style="background-color: #e8fbea;">4</div>
-                    <div class="coach-name">First AC</div>
-                </div>
-                <div class="color-box">
-                    <div class="coach-count">0</div>
-                    <div class="coach-name">Second AC</div>
-                </div>
-                <div class="color-box">
-                    <div class="coach-count">0</div>
-                    <div class="coach-name">Third AC</div>
+                <div class="color-box" *ngFor="let coachName of coaches.keys()">
+                    <div class="coach-count" [style.backgroundColor]="coaches.get(coachName) !== '0' ? '#e8fbea' : '#e8f1fb'">{{coaches.get(coachName)}}</div>
+                    <div class="coach-name">{{coachName}}</div>
                 </div>
             </div>
         </div>

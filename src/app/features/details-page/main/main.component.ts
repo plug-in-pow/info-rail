@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DataServiceService } from 'src/app/core/services/data-service.service';
 
 @Component({
   selector: 'app-main',
@@ -70,11 +71,26 @@ export class MainComponent implements OnInit {
       "departure": "12:15:00"
     },
   ]
-
-  constructor(private router:Router) { }
+  trainId: string = '';
+  trainData: any;
+  coaches: Map<string,string> = new Map();
+  constructor(private router:Router, private route:ActivatedRoute, private dataService:DataServiceService) { }
 
   ngOnInit(): void {
+    this.trainId = this.route.snapshot.paramMap.get('id') || '';
+    this.dataService.getTrainsData(Number(this.trainId))
+    .subscribe((res: any) => {
+      this.trainData = res[0]; 
+      this.trainData.coaches.split(',').forEach((val: string) => {
+        let keyValueArr: string[] = val.split(':');
+        this.coaches.set(
+          keyValueArr[0].replace('_',' '),
+          keyValueArr[1]
+          )
+      })
+    })
   }
+
   routeBack(): void {
     this.router.navigate(['search']);
   }
