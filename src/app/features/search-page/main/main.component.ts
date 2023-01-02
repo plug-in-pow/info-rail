@@ -13,16 +13,17 @@ export class MainComponent implements OnInit, OnChanges {
   trainData: any = [];
   orderByMap: string[] = ['train_no', 'train_name'];
   isLoaded: boolean = false;
+  loadingMessage: string = 'Fetching Data'
   @Input() currentSortBy: number = 0;
 
   constructor(private router:Router, private dataService: DataServiceService) { }
 
   ngOnInit(): void {
-    this.getCurrentPageData(0,8,this.orderByMap[this.currentSortBy])
+    this.getCurrentPageData(0,20,this.orderByMap[this.currentSortBy])
   }
   
-  ngOnChanges(change: SimpleChanges){
-    this.getCurrentPageData(0,8,this.orderByMap[this.currentSortBy])
+  ngOnChanges(){
+    this.getCurrentPageData(0,20,this.orderByMap[this.currentSortBy])
   }
   
   getCurrentPageData(pageNo: number, limit: number, orderByValue: string){

@@ -1,33 +1,23 @@
 <header>
     <div class="logo">
         <i class="uil uil-metro"></i>
-        <span>Info Rail</span>
+        <span>{{title}}</span>
     </div>
     <div class="header-block">
         <div class="input-container">
-            <input placeholder="Train No. or Name" (keyup)="search($event)" class="input-field" type="text">
+            <input placeholder="Train No. or Name" [formControl]="searchTerm" class="input-field" type="text">
             <i class="search-icon uil uil-search"></i>
-            <div class="query-list" *ngIf="loadSearchResultBlock">
+            <i *ngIf="searchTerm.value !== ''" (click)="clearSearchField()" class="cross-icon uil uil-times-circle"></i>
+            <div class="query-list">
+                <ul *ngIf="searchTerm.value !== ''">
+                    <li *ngFor="let trainDetail of searchResult" (click)="getDetails(trainDetail.train_no)">
+                        <span class="train-number">{{trainDetail.train_no}}</span><br/>
+                        <span class="train-name">{{trainDetail.train_name}}</span>
+                    </li>
+                </ul>
                 <ul>
-                    <li>
-                        <span class="train-number">1101</span><br/>
-                        <span class="train-name">Lorem ipsum doloricing elit.</span>
-                    </li>
-                    <li>
-                        <span class="train-number">1101</span><br/>
-                        <span class="train-name">Lorem ipsum dolor sit amet.</span>
-                    </li>
-                    <li>
-                        <span class="train-number">1101</span><br/>
-                        <span class="train-name">Lorem ipsum dolor sit amet.</span>
-                    </li>
-                    <li>
-                        <span class="train-number">1101</span><br/>
-                        <span class="train-name">Lorem ipsum dolor sit amet.</span>
-                    </li>
-                    <li>
-                        <span class="train-number">1101</span><br/>
-                        <span class="train-name">Lorem ipsum dolor sit amet.</span>
+                    <li *ngIf="showNoResultMessage" class="error-message logo">
+                        <i class="uil uil-annoyed"></i>{{noResultMessage}}
                     </li>
                 </ul>
             </div>

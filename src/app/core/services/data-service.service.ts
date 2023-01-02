@@ -27,4 +27,12 @@ export class DataServiceService {
       }
     });
   }
+
+  getMatchingTrainList(searchReq: string) {
+    return this.http.get(this.baseUrl + '/list/search',{
+      params: {
+        'find': searchReq
+      }
+    });
+  }
 }
