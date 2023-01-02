@@ -5,8 +5,32 @@
     </div>
     <div class="header-block">
         <div class="input-container">
-            <input placeholder="Train No. or Name" class="input-field" type="text">
+            <input placeholder="Train No. or Name" (keyup)="search($event)" class="input-field" type="text">
             <i class="search-icon uil uil-search"></i>
+            <div class="query-list" *ngIf="loadSearchResultBlock">
+                <ul>
+                    <li>
+                        <span class="train-number">1101</span><br/>
+                        <span class="train-name">Lorem ipsum doloricing elit.</span>
+                    </li>
+                    <li>
+                        <span class="train-number">1101</span><br/>
+                        <span class="train-name">Lorem ipsum dolor sit amet.</span>
+                    </li>
+                    <li>
+                        <span class="train-number">1101</span><br/>
+                        <span class="train-name">Lorem ipsum dolor sit amet.</span>
+                    </li>
+                    <li>
+                        <span class="train-number">1101</span><br/>
+                        <span class="train-name">Lorem ipsum dolor sit amet.</span>
+                    </li>
+                    <li>
+                        <span class="train-number">1101</span><br/>
+                        <span class="train-name">Lorem ipsum dolor sit amet.</span>
+                    </li>
+                </ul>
+            </div>
         </div>
         <div class="filter">
             <button (click)="toggleFilter()">

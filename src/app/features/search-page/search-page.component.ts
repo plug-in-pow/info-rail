@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: []
 })
 export class SearchPageComponent implements OnInit {
+  sortByValueId: number = 0;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  getSortByValue(value: number){
+    this.sortByValueId = value
   }
 
 }

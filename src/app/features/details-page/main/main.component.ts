@@ -73,7 +73,16 @@ export class MainComponent implements OnInit {
   ]
   trainId: string = '';
   trainData: any;
-  coaches: Map<string,string> = new Map();
+  loadingMessage: string = 'Loading Train Details!'
+  isDetailsLoaded: boolean = false;
+  coaches: any = {
+    "chair car":"0",
+    "first class":"0",
+    "sleeper":"1",
+    "first ac":"0",
+    "second ac":"0",
+    "third ac":"0"
+  };
   constructor(private router:Router, private route:ActivatedRoute, private dataService:DataServiceService) { }
 
   ngOnInit(): void {
@@ -83,11 +92,9 @@ export class MainComponent implements OnInit {
       this.trainData = res[0]; 
       this.trainData.coaches.split(',').forEach((val: string) => {
         let keyValueArr: string[] = val.split(':');
-        this.coaches.set(
-          keyValueArr[0].replace('_',' '),
-          keyValueArr[1]
-          )
-      })
+        this.coaches[keyValueArr[0].replace('_',' ')] = keyValueArr[1];
+      });
+      this.isDetailsLoaded = true;
     })
   }
 

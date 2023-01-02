@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +12,9 @@ export class HeaderComponent implements OnInit {
   fromStation: string = '';
   toStation: string = '';
   selectedSortingItem: string = 'Train No.';
+  loadSearchResultBlock: boolean = false;
+  @Output() setSortByEvent = new EventEmitter<number>();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -29,6 +32,15 @@ export class HeaderComponent implements OnInit {
 
   selectOption(event: Event): void {
     this.selectedSortingItem = (event.target as HTMLOListElement).innerText;
+    if(this.selectedSortingItem === 'Train No.'){
+      this.setSortByEvent.emit(0);
+    }else{
+      this.setSortByEvent.emit(1);
+    }
+  }
+
+  search(event: Event): void {
+    
   }
 
 }

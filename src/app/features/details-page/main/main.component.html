@@ -3,12 +3,11 @@
         <i class="uil uil-angle-left"></i>
     </button>
     <div class="logo">
-        <i class="uil uil-notes"></i>
-        <span>Train Details</span>
+        <span>Details</span>
     </div>
 </header>
 
-<div class="details-container" *ngIf="trainData">
+<div class="details-container" *ngIf="isDetailsLoaded; else loader">
     <div class="side-block">
         <div class="meta-data-block">
             <span>Train Type<br/><h3>{{trainData.train_type}}</h3></span>
@@ -48,9 +47,9 @@
         <div class="coach-info-block">
             <h3>Coaches</h3>
             <div class="box-row">
-                <div class="color-box" *ngFor="let coachName of coaches.keys()">
-                    <div class="coach-count" [style.backgroundColor]="coaches.get(coachName) !== '0' ? '#e8fbea' : '#e8f1fb'">{{coaches.get(coachName)}}</div>
-                    <div class="coach-name">{{coachName}}</div>
+                <div class="color-box" *ngFor="let coach of coaches | keyvalue">
+                    <div class="coach-count" [style.backgroundColor]="coach.value !== '0' ? '#e8fbea' : '#e8f1fb'">{{coach.value}}</div>
+                    <div class="coach-name">{{coach.key}}</div>
                 </div>
             </div>
         </div>
@@ -72,3 +71,10 @@
         </ul>
     </div>
 </div>
+
+<ng-template #loader>
+    <div class="loader">
+        <img src="assets/gifs/details_icon.gif" alt="loading_icon" width="100" height="100">
+        <label>{{loadingMessage}}</label>
+    </div>
+</ng-template>

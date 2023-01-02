@@ -96,6 +96,34 @@ header {
     position: relative;
 }
 
+.query-list { 
+    position: absolute;
+    top: 5.5rem;
+    background-color: #e4eaf6;
+    border-radius: 0.5rem;
+    max-height: 300px;
+    width: 100%;
+    overflow-y: auto;
+    li:not(:last-child) {
+        border-bottom: 1px solid rgb(194, 191, 239);
+    }
+    li {
+        padding: 2rem;
+        cursor: pointer;
+        .train-number {
+            font-size: 1.5rem;
+            color: #0b4076;
+            font-weight: 600;
+        }
+        .train-name {
+            font-size: 1.5rem;
+        }
+    }
+    li:hover {
+        background-color: #bad5f0;
+    }
+}
+
 .dropdown {
     position: absolute;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -259,6 +287,7 @@ header {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    height: 70vh;
     label {
         margin-top: 2rem;
         font-size: 1.5rem;
@@ -387,6 +416,7 @@ $circle-width: 75px;
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
+            gap: 20px;
             .from-block , .to-block {
                 display: flex;
                 flex-direction: column;
