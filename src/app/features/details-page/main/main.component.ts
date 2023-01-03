@@ -102,4 +102,8 @@ export class MainComponent implements OnInit {
     this.router.navigate(['search']);
   }
 
+  keepOriginalOrder(): number {
+    return 0;
+  }
+
 }

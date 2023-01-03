@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
   selectedSortingItem: string = 'Train No.';
   showNoResultMessage: boolean = false;
   searchResult: any[] = [];
+  isSearchingTerm: boolean = false
   searchTerm: FormControl = new FormControl('');
   @Output() setSortByEvent = new EventEmitter<number>();
 
@@ -27,13 +28,19 @@ export class HeaderComponent implements OnInit {
     this.searchTerm.valueChanges
     .pipe(
       debounceTime(200),
-      filter(val => val !== ''),
       map(val => val.trim()),
+      filter(val => {
+        this.setDefaultParamSearchField();
+        return val !== '';
+      }),
+      map(val => {
+        this.isSearchingTerm = true;
+        return val;
+      }),
       distinctUntilChanged(),
       switchMap(val => 
         this.dataService.getMatchingTrainList(val).pipe(
-          retry(1),
-          startWith([])
+          retry(1)
         )
       )
     ).subscribe((res: any) => {
@@ -42,6 +49,7 @@ export class HeaderComponent implements OnInit {
       }else{
         this.showNoResultMessage = false;
       }
+      this.isSearchingTerm = false;
       this.searchResult = res;
     })
   }
@@ -75,6 +83,12 @@ export class HeaderComponent implements OnInit {
     this.searchTerm.setValue('');
     this.showNoResultMessage = false;
     this.searchResult = [];
+  }
+
+  setDefaultParamSearchField() {
+    this.showNoResultMessage = false;
+    this.isSearchingTerm = false;
+    this.searchResult = []
   }
 
 }

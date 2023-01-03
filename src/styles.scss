@@ -66,6 +66,7 @@ header {
 
 .details-header {
     z-index: 1;
+    border-bottom: none;
 }
 
 .details-header::after {
@@ -388,7 +389,6 @@ header {
     gap: 3rem;
     align-items: flex-start;
     row-gap: 5rem;
-    margin: 5rem 0;
 }
 
 $circle-width: 75px;
@@ -564,8 +564,8 @@ $circle-width: 75px;
     }
 
     .details-header {
-        justify-content: space-around;
-        padding: 2rem 0;
+        justify-content: space-between;
+        padding: 2rem;
         .logo span {
             display: block;
         }

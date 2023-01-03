@@ -9,7 +9,7 @@
         </button>
     </div>
     <div class="search-page-container">
-        <ng-container *ngIf="trainData.length > 0; else loader">
+        <ng-container *ngIf="isLoaded; else loader">
             <div *ngFor="let data of trainData" class="card">
                 <div class="text">
                     <span class="title-text">Train No. :</span>

@@ -2,9 +2,6 @@
     <button (click)="routeBack()" class="back-btn" title="Go back">
         <i class="uil uil-angle-left"></i>
     </button>
-    <div class="logo">
-        <span>Details</span>
-    </div>
 </header>
 
 <div class="details-container" *ngIf="isDetailsLoaded; else loader">
@@ -47,7 +44,7 @@
         <div class="coach-info-block">
             <h3>Coaches</h3>
             <div class="box-row">
-                <div class="color-box" *ngFor="let coach of coaches | keyvalue">
+                <div class="color-box" *ngFor="let coach of coaches | keyvalue: keepOriginalOrder">
                     <div class="coach-count" [style.backgroundColor]="coach.value !== '0' ? '#e8fbea' : '#e8f1fb'">{{coach.value}}</div>
                     <div class="coach-name">{{coach.key}}</div>
                 </div>

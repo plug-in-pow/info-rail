@@ -16,8 +16,11 @@
                     </li>
                 </ul>
                 <ul>
-                    <li *ngIf="showNoResultMessage" class="error-message logo">
+                    <li *ngIf="showNoResultMessage && !isSearchingTerm" class="error-message logo">
                         <i class="uil uil-annoyed"></i>{{noResultMessage}}
+                    </li>
+                    <li *ngIf="isSearchingTerm" class="error-message logo">
+                        <i class="uil uil-file-search-alt"></i>Searching
                     </li>
                 </ul>
             </div>

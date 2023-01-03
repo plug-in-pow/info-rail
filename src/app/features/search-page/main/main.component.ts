@@ -13,7 +13,7 @@ export class MainComponent implements OnInit, OnChanges {
   trainData: any = [];
   orderByMap: string[] = ['train_no', 'train_name'];
   isLoaded: boolean = false;
-  loadingMessage: string = 'Fetching Data'
+  loadingMessage: string = 'Fetching Data';
   @Input() currentSortBy: number = 0;
 
   constructor(private router:Router, private dataService: DataServiceService) { }
