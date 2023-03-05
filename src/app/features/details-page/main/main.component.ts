@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TrainsInfo } from 'src/app/core/models/trains-data-model';
 import { DataServiceService } from 'src/app/core/services/data-service.service';
 
 @Component({
@@ -72,7 +73,7 @@ export class MainComponent implements OnInit {
     },
   ]
   trainId: string = '';
-  trainData: any;
+  trainData!: TrainsInfo;
   loadingMessage: string = 'Loading Train Details!'
   isDetailsLoaded: boolean = false;
   coaches: any = {
@@ -87,9 +88,10 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.trainId = this.route.snapshot.paramMap.get('id') || '';
+
     this.dataService.getTrainsData(Number(this.trainId))
-    .subscribe((res: any) => {
-      this.trainData = res[0]; 
+    .subscribe((res: TrainsInfo) => {
+      this.trainData = res; 
       this.trainData.coaches.split(',').forEach((val: string) => {
         let keyValueArr: string[] = val.split(':');
         this.coaches[keyValueArr[0].replace('_',' ')] = keyValueArr[1];

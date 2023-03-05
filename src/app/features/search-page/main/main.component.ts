@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { throttleTime } from 'rxjs';
+import { TrainsInfoSearchPage } from 'src/app/core/models/trains-data-model';
 import { DataServiceService } from 'src/app/core/services/data-service.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { DataServiceService } from 'src/app/core/services/data-service.service';
 })
 export class MainComponent implements OnInit, OnChanges {
 
-  trainData: any = [];
+  trainData: TrainsInfoSearchPage[] = [];
   orderByMap: string[] = ['train_no', 'train_name'];
   isLoaded: boolean = false;
   loadingMessage: string = 'Fetching Data';
@@ -19,7 +20,7 @@ export class MainComponent implements OnInit, OnChanges {
   constructor(private router:Router, private dataService: DataServiceService) { }
 
   ngOnInit(): void {
-    this.getCurrentPageData(0,20,this.orderByMap[this.currentSortBy])
+    
   }
   
   ngOnChanges(){
@@ -31,7 +32,7 @@ export class MainComponent implements OnInit, OnChanges {
     this.dataService.getCurrentPageList(pageNo, limit, orderByValue)
       .pipe(throttleTime(1000))
       .subscribe({
-        next: (val) => this.trainData = val,
+        next: (val: TrainsInfoSearchPage[]) => this.trainData = val,
         error: (err) => console.error(err),
         complete: () => this.isLoaded = true
       })
