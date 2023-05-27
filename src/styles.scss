@@ -341,6 +341,9 @@ header {
     button:hover {
         filter: contrast(90%);
     }
+    button:disabled {
+        pointer-events: none;
+    }
 }
 
 .card {
@@ -365,7 +368,10 @@ header {
         border-radius: 3rem;
     }
     button:hover {
-        filter: contrast(70%)
+        filter: contrast(70%);
+    }
+    button:disabled {
+        pointer-events: none;
     }
 }
 

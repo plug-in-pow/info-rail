@@ -15,16 +15,22 @@ export class MainComponent implements OnInit, OnChanges {
   orderByMap: string[] = ['train_no', 'train_name'];
   isLoaded: boolean = false;
   loadingMessage: string = 'Fetching Data';
+  paginationData = {
+    "startIndex" : 1,
+    "endIndex": 20,
+    "perPageLimit": 20,
+    "pageNo": 0,
+    "totalMatchRecords": 500
+  }
+
   @Input() currentSortBy: number = 0;
 
   constructor(private router:Router, private dataService: DataServiceService) { }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
   
   ngOnChanges(){
-    this.getCurrentPageData(0,20,this.orderByMap[this.currentSortBy])
+    this.getCurrentPageData(this.paginationData.pageNo,this.paginationData.perPageLimit,this.orderByMap[this.currentSortBy])
   }
   
   getCurrentPageData(pageNo: number, limit: number, orderByValue: string){
@@ -32,7 +38,10 @@ export class MainComponent implements OnInit, OnChanges {
     this.dataService.getCurrentPageList(pageNo, limit, orderByValue)
       .pipe(throttleTime(1000))
       .subscribe({
-        next: (val: TrainsInfoSearchPage[]) => this.trainData = val,
+        next: (val: TrainsInfoSearchPage[]) => {
+          this.trainData = val;
+          this.paginationData.endIndex = this.trainData.length < this.paginationData.perPageLimit ? this.paginationData.totalMatchRecords : this.paginationData.endIndex;
+        },
         error: (err) => console.error(err),
         complete: () => this.isLoaded = true
       })
@@ -40,6 +49,40 @@ export class MainComponent implements OnInit, OnChanges {
 
   getDetails(id: number) {
     this.router.navigate(['details',id]);
+  }
+
+  goLeftPage() {
+    this.paginationData.startIndex -= 20;
+    this.paginationData.endIndex -= 20;
+    this.paginationData.pageNo -= 1;
+    this.getCurrentPageData(this.paginationData.pageNo,this.paginationData.perPageLimit,this.orderByMap[this.currentSortBy])
+  }
+
+  goRightPage() {
+    this.paginationData.startIndex += 20;
+    this.paginationData.endIndex += 20;
+    this.paginationData.pageNo += 1;
+    this.getCurrentPageData(this.paginationData.pageNo,this.paginationData.perPageLimit,this.orderByMap[this.currentSortBy])
+  }
+
+  goStart() {
+    this.paginationData = {
+      ...this.paginationData,
+      "startIndex" : 1,
+      "endIndex": 20,
+      "pageNo": 0
+    }
+    this.getCurrentPageData(this.paginationData.pageNo,this.paginationData.perPageLimit,this.orderByMap[this.currentSortBy])
+  }
+
+  goEnd() {
+    this.paginationData = {
+      ...this.paginationData,
+      "startIndex" : 1,
+      "endIndex": 20,
+      "pageNo": 0
+    }
+    this.getCurrentPageData(this.paginationData.pageNo,this.paginationData.perPageLimit,this.orderByMap[this.currentSortBy])
   }
 
 }
