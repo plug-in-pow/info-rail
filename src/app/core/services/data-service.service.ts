@@ -37,4 +37,8 @@ export class DataServiceService {
       }
     });
   }
+
+  getTrainTotalLength(): Observable<any> {
+    return this.http.get<any>(this.baseUrl + '/list/meta').pipe(map(res => res[0]['total_trains']));
+  }
 }

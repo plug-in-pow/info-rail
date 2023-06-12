@@ -27,7 +27,11 @@ export class MainComponent implements OnInit, OnChanges {
 
   constructor(private router:Router, private dataService: DataServiceService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.dataService.getTrainTotalLength().subscribe(totalRecords => {
+      this.paginationData['totalMatchRecords'] = totalRecords;
+    })
+  }
   
   ngOnChanges(){
     this.getCurrentPageData(this.paginationData.pageNo,this.paginationData.perPageLimit,this.orderByMap[this.currentSortBy])
@@ -76,11 +80,12 @@ export class MainComponent implements OnInit, OnChanges {
   }
 
   goEnd() {
+    const perPageRecord = Math.round(this.paginationData.totalMatchRecords / this.paginationData.perPageLimit);
     this.paginationData = {
       ...this.paginationData,
-      "startIndex" : 1,
-      "endIndex": 20,
-      "pageNo": 0
+      "startIndex" : this.paginationData.perPageLimit*perPageRecord+1,
+      "endIndex": this.paginationData.totalMatchRecords,
+      "pageNo": perPageRecord-1
     }
     this.getCurrentPageData(this.paginationData.pageNo,this.paginationData.perPageLimit,this.orderByMap[this.currentSortBy])
   }
