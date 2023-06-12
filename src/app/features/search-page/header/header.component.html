@@ -25,24 +25,6 @@
                 </ul>
             </div>
         </div>
-        <div class="filter">
-            <button (click)="toggleFilter()">
-                <i class="uil uil-filter"></i>
-                <span>Filter</span>
-                <i class="uil" [ngClass]="showFilter ? 'uil-angle-down':'uil-angle-up'"></i>
-            </button>
-            <div id="filter-dropdown" class="dropdown" [style.display]="showFilter ? 'flex' : 'none'">
-                <input type="text" placeholder="From Station" name="from-station"/>
-                <button class="exchange-btn">
-                    <i class="uil uil-exchange"></i>
-                </button>
-                <input type="text" placeholder="To Station" name="to-station"/>
-                <div class="form-btn">
-                    <button class="btn" (click)="toggleFilter()">Apply Filter</button>
-                    <button class="btn" (click)="toggleFilter()">Clear</button>
-                </div>
-            </div>
-        </div>
         <div class="sort">
             <button (click)="toggleDropdown()">
                 <i class="uil uil-sort"></i>

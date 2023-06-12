@@ -14,7 +14,6 @@ export class HeaderComponent implements OnInit {
   title: string = 'Info Rail';
   noResultMessage: string = 'Oops, No Results Found!';
   showDropdown: boolean = false;
-  showFilter: boolean = false;
   fromStation: string = '';
   toStation: string = '';
   selectedSortingItem: string = 'Train No.';
@@ -58,12 +57,6 @@ export class HeaderComponent implements OnInit {
 
   toggleDropdown(): void {
     this.showDropdown = !this.showDropdown;
-    this.showFilter = false;
-  }
-
-  toggleFilter(): void {
-    this.showFilter = !this.showFilter;
-    this.showDropdown = false;
   }
 
   selectOption(event: Event): void {

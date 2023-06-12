@@ -158,42 +158,6 @@ header {
     }
 }
 
-#filter-dropdown {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    background-color: map-get($header, "background-color");
-    right: 18rem;
-    width: 300px;
-    row-gap: 1rem;
-    input {
-        height: 4rem;
-        width: 100%;
-        border: 2px solid $border-color;
-        border-radius: 0.5rem;
-        padding-inline-start: 1rem;
-    }
-    input:focus {
-        outline: none;
-    }
-    .exchange-btn {
-        vertical-align: middle;
-        background-color: map-get($header, "button-background-color");
-        color: map-get($header, "button-color");
-        border-radius: 50%;
-        height: 30px;
-        width: 30px;
-        border: none;
-        i {
-            display: block;
-            transform: rotate(90deg);
-            font-size: 2rem;
-            cursor: pointer;
-        }
-    }
-}
-
 .form-btn {
     display: flex;
     align-items: center;
