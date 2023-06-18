@@ -55,14 +55,14 @@
         <h3 class="timetable-title">Train Journey</h3>
         <ul>
             <li class="timetable-row" *ngFor="let trainData of trainSchedule">
-                <span class="small-item time"><b>{{trainData.arrival}}</b></span>
+                <span class="small-item time"><b>{{trainData.arrival_time}}</b></span>
                 <span class="outer-cirle">
                     <span class="inner-circle"></span>
                     <svg class="line-svg" width="20" height="120">
                         <line x1="10" y1="20" x2="10" y2="120" stroke="#0b4076" style="stroke-width:2"/>
                     </svg>
                 </span>
-                <span class="large-item title">{{trainData.station_name}}<br/>({{trainData.station_code}})</span>
+                <span class="large-item title">{{trainData.station_name}}<br/>({{trainData.station_cd}})</span>
                 <span class="small-item day">Day : {{trainData.day}}</span>
             </li>
         </ul>

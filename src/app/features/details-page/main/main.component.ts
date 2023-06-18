@@ -10,68 +10,7 @@ import { DataServiceService } from 'src/app/core/services/data-service.service';
 })
 export class MainComponent implements OnInit {
 
-  trainSchedule: any[] = [
-    {
-      "arrival": "10:40:00",
-      "day": 1,
-      "train_name": "Jammu Tawi Udhampur Special",
-      "station_name": "JAMMU TAWI",
-      "station_code": "JAT",
-      "id": 225347,
-      "train_number": "04601",
-      "departure": "10:40:00"
-    },
-    {
-      "arrival": "10:55:00",
-      "day": 1,
-      "train_name": "Jammu Tawi Udhampur Special",
-      "station_name": "BAJALTA",
-      "station_code": "BLA",
-      "id": 225348,
-      "train_number": "04601",
-      "departure": "10:55:00"
-    },
-    {
-      "arrival": "11:02:00",
-      "day": 1,
-      "train_name": "Jammu Tawi Udhampur Special",
-      "station_name": "SANGAR",
-      "station_code": "SGRR",
-      "id": 225349,
-      "train_number": "04601",
-      "departure": "11:02:00"
-    },
-    {
-      "arrival": "11:11:00",
-      "day": 1,
-      "train_name": "Jammu Tawi Udhampur Special",
-      "station_name": "MANWAL",
-      "station_code": "MNWL",
-      "id": 225350,
-      "train_number": "04601",
-      "departure": "11:11:00"
-    },
-    {
-      "arrival": "11:42:00",
-      "day": 1,
-      "train_name": "Jammu Tawi Udhampur Special",
-      "station_name": "RAM NAGAR J K",
-      "station_code": "RMJK",
-      "id": 225351,
-      "train_number": "04601",
-      "departure": "11:43:00"
-    },
-    {
-      "arrival": "12:15:00",
-      "day": 1,
-      "train_name": "Jammu Tawi Udhampur Special",
-      "station_name": "UDHAMPUR",
-      "station_code": "UHP",
-      "id": 225352,
-      "train_number": "04601",
-      "departure": "12:15:00"
-    },
-  ]
+  trainSchedule: any[] = []
   trainId: string = '';
   trainData!: TrainsInfo;
   loadingMessage: string = 'Loading Train Details!'
@@ -84,6 +23,7 @@ export class MainComponent implements OnInit {
     "second ac":"0",
     "third ac":"0"
   };
+
   constructor(private router:Router, private route:ActivatedRoute, private dataService:DataServiceService) { }
 
   ngOnInit(): void {
@@ -97,6 +37,10 @@ export class MainComponent implements OnInit {
         this.coaches[keyValueArr[0].replace('_',' ')] = keyValueArr[1];
       });
       this.isDetailsLoaded = true;
+    });
+
+    this.dataService.getTrainJourney(Number(this.trainId)).subscribe(res => {
+      this.trainSchedule = res;
     })
   }
 

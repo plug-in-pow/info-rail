@@ -1,5 +1,5 @@
 <div class="main-page-container">
-    <div class="pagination-block">
+    <div class="pagination-block" *ngIf="isLoaded">
         <span>Showing <b>{{paginationData.startIndex}}-{{paginationData.endIndex}}</b> of <b>{{paginationData.totalMatchRecords}}</b></span>
         <button type="button" [disabled]="paginationData.startIndex === 1">
             <i class="uil uil-angle-double-left" (click)="goStart()"></i>

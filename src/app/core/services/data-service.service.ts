@@ -41,4 +41,12 @@ export class DataServiceService {
   getTrainTotalLength(): Observable<any> {
     return this.http.get<any>(this.baseUrl + '/list/meta').pipe(map(res => res[0]['total_trains']));
   }
+
+  getTrainJourney(train_number: number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + '/journey', {
+      params: {
+        'train_no': train_number
+      }
+    });
+  }
 }
