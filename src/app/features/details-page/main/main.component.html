@@ -53,7 +53,7 @@
     </div>
     <div class="timetable-container">
         <h3 class="timetable-title">Train Journey</h3>
-        <ul>
+        <ul *ngIf="isTimetableLoaded; else timetableLoader">
             <li class="timetable-row" *ngFor="let trainData of trainSchedule">
                 <span class="small-item time"><b>{{trainData.arrival_time}}</b></span>
                 <span class="outer-cirle">
@@ -66,6 +66,12 @@
                 <span class="small-item day">Day : {{trainData.day}}</span>
             </li>
         </ul>
+        <ng-template #timetableLoader>
+            <div class="loader">
+                <img src="assets/gifs/searching_input_field.gif" alt="loading_icon" width="100" height="100">
+                <label>{{loadingMessageJourney}}</label>
+            </div>
+        </ng-template>
     </div>
 </div>
 

@@ -13,8 +13,10 @@ export class MainComponent implements OnInit {
   trainSchedule: any[] = []
   trainId: string = '';
   trainData!: TrainsInfo;
-  loadingMessage: string = 'Loading Train Details!'
+  loadingMessage: string = 'Loading Train Details!';
+  loadingMessageJourney: string = 'Loading Train Journey!';
   isDetailsLoaded: boolean = false;
+  isTimetableLoaded: boolean = false;
   coaches: any = {
     "chair car":"0",
     "first class":"0",
@@ -41,6 +43,7 @@ export class MainComponent implements OnInit {
 
     this.dataService.getTrainJourney(Number(this.trainId)).subscribe(res => {
       this.trainSchedule = res;
+      this.isTimetableLoaded = true;
     })
   }
 

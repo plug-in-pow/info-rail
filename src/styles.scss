@@ -444,6 +444,7 @@ $circle-width: 75px;
         }
         .small-item{
             width: 80px;
+            white-space: nowrap;
         }
         .large-item{
             width: 200px;
@@ -476,7 +477,7 @@ $circle-width: 75px;
         }
     }
     ul {
-        height: 88rem;
+        max-height: 88rem;
         overflow-y: auto;
     }
 }
@@ -649,5 +650,17 @@ $circle-width: 75px;
 
     .timetable-container .time {
         letter-spacing: normal;
+    }
+}
+
+.footer-container {
+    height: 10rem;
+    display: flex;
+    color: white;
+    background-color: #0b4076;
+    align-items: center;
+    justify-content: center;
+    span {
+        font-size: 1.5rem;
     }
 }
