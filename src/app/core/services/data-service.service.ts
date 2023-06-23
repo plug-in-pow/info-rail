@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { TrainsInfo, TrainsInfoSearchPage, TrainsSearchResult } from '../models/trains-data-model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataServiceService {
 
-  baseUrl: string = 'https://info-rail-api-gateway.onrender.com';
+  baseUrl: string = environment.baseUrl;
 
   constructor(private http:HttpClient) { }
 
