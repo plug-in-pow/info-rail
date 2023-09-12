@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'https://info-rail-api-gateway.onrender.com'
+  baseUrl: 'https://info-rail-backend-gateway.vercel.app'
 };

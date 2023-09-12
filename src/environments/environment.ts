@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://info-rail-api-gateway.onrender.com'
+  baseUrl: 'https://info-rail-backend-gateway.vercel.app'
 };
 
 /*
